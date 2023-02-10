@@ -141,8 +141,9 @@ def delete_mail_route(mail_id: str) -> bool:
         bool: True if the mail was deleted, False otherwise
     """
     # TODO: implement this function
-    mail_entry = request.get_json()
-    return delete_mail(mail_entry)
+    res = jsonify({'Deleted': delete_mail(mail_id)})
+    res.status_code = 200 # Status code for "OK"
+    return res
 
 
 @app.route('/mail/<mail_id>', methods=['GET'])
